@@ -63,55 +63,6 @@ namespace WebAPITeaApp.Controllers
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest, "Error");
             }
-
-            //// Get NOTE from tb.ITMENS by ID , type from DB - ITEM 
-            //var bufItem = dbContext.Items.Where(b => b.GuidId == id).First();
-
-            //var bufPhotos = dbContext.Photos.Where(b => b.PhotoId == bufItem.GuidId).ToList();
-
-            //// Get itemDTO - transform to DTO
-            ////Item recievedFromDBAndUpdatedItem = Mapper.Map<ItemDto, Item> (itemDto);
-
-            //Item recievedFromDBAndUpdatedItem = new Item();
-            ////ItemDto bufNote = new ItemDto();
-            ////recievedFromDBAndUpdatedItem.GuidId = itemDto.GuidIdOfItem;
-            //recievedFromDBAndUpdatedItem.Cost = itemDto.Cost;
-            //recievedFromDBAndUpdatedItem.Name = itemDto.Name;
-            //recievedFromDBAndUpdatedItem.Description = itemDto.Description;
-            //recievedFromDBAndUpdatedItem.ImageLink = itemDto.ImageLink;
-
-            //recievedFromDBAndUpdatedItem.Category = new Category();
-            //recievedFromDBAndUpdatedItem.Manufacter = new Manufacter();
-
-            //recievedFromDBAndUpdatedItem.Category.CategoryId = itemDto.CategoryId;
-            //recievedFromDBAndUpdatedItem.Manufacter.ManufacterId = itemDto.ManufacterId;
-
-            //recievedFromDBAndUpdatedItem.GuidId = bufItem.GuidId;
-
-            //try
-            //{
-            //    dbContext.Items.Remove(bufItem);
-            //    dbContext.Items.Add(recievedFromDBAndUpdatedItem);
-
-            //    foreach (Photo elem in bufPhotos)
-            //    {
-            //        Photo photoUpdated = new Photo();
-            //        photoUpdated.PhotoId = bufItem.GuidId;
-            //        photoUpdated.LinkPhoto = elem.LinkPhoto;
-            //        photoUpdated.PhotoId = elem.PhotoId;
-
-            //        dbContext.Photos.Remove(bufPhotos[0]);
-            //        dbContext.Photos.Add(photoUpdated);
-            //    }
-
-            //    dbContext.SaveChanges();
-            //    return Request.CreateResponse(HttpStatusCode.OK, "Ok");
-            //}
-            //catch
-            //{
-            //    return Request.CreateResponse(HttpStatusCode.BadRequest, "Error");
-            //}
-
         }
 
         // DELETE CURRENT ITEM

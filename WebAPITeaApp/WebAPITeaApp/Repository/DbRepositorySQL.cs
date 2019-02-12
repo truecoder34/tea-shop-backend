@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Web;
 using WebAPITeaApp.Models.DB;
@@ -40,21 +41,15 @@ namespace WebAPITeaApp.Repository
 
         public void Update(TEntity note, Guid id)
         {
+            // 1 - get note from db
             TEntity noteExisting = _dbSet.Find(id);
-            try
-            {
-                if (noteExisting != null)
-                {
-                    _contextDb.Entry(noteExisting).CurrentValues.SetValues(note);
-                    //_contextDb.Entry(note).State = EntityState.Modified;
-                    _contextDb.SaveChanges();
-                }
-                    
-            }
-            catch
-            {
-
-            }
+            // 2 - remember guid of note
+            Guid bufferId = noteExisting.GuidId;
+            // 3 - remove old note
+            Remove(noteExisting);
+            // 4 - write new note with the same id
+            note.GuidId = bufferId;
+            Create(note);
         }
 
         public void Delete(Guid id)
