@@ -11,7 +11,7 @@ namespace WebAPITeaApp.Commands
        public abstract ICommandCommonResult Execute();
     }
 
-    abstract public class EmptyCommand
+    abstract public class Command
     {
         public abstract void Execute();
     }

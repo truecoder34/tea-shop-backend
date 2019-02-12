@@ -24,7 +24,7 @@ namespace WebAPITeaApp.Controllers
         static TeaShopContext dbContext = new TeaShopContext();
         // repository object 
         DbRepositorySQL<Item> repository = new DbRepositorySQL<Item>(dbContext);
-        Item itemToInsert = new Item();
+        Item item = new Item();
         ICommandCommonResult result;
 
         // Add new Item
@@ -35,7 +35,7 @@ namespace WebAPITeaApp.Controllers
             // Call command create
             try
             {
-                CreateItemCommand<ItemDto, Item> CreateItem = new CreateItemCommand<ItemDto, Item>(itemDto, itemToInsert, repository);
+                CreateItemCommand<ItemDto, Item> CreateItem = new CreateItemCommand<ItemDto, Item>(itemDto, item, repository);
                 result = CreateItem.Execute();
                 return Request.CreateResponse(HttpStatusCode.OK, result);
             }
@@ -52,10 +52,9 @@ namespace WebAPITeaApp.Controllers
         [Route("items/{id}")]
         public HttpResponseMessage UpdateItem(Guid id, [FromBody] ItemDto itemDto)
         {
-            Item itemToUpdate = new Item();
             try
             {
-                UpdateItemCommand<ItemDto, Item> UpdateItem = new UpdateItemCommand<ItemDto, Item>(itemDto, itemToUpdate, repository, id);
+                UpdateItemCommand<ItemDto, Item> UpdateItem = new UpdateItemCommand<ItemDto, Item>(itemDto, item, repository, id);
                 UpdateItem.Execute();
                 return Request.CreateResponse(HttpStatusCode.OK, "Note is updated - OK");
             }
